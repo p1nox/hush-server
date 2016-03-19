@@ -1,0 +1,19 @@
+{
+  "name": "hush-server",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon . | bunyan -o short"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "bunyan": "^1.8.0",
+    "lodash": "^4.6.1",
+    "mongoose": "^4.4.8",
+    "restify": "^4.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1"
+  }
+}
