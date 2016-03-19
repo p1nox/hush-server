@@ -11,7 +11,8 @@
     "bunyan": "^1.8.0",
     "lodash": "^4.6.1",
     "mongoose": "^4.4.8",
-    "restify": "^4.0.4"
+    "restify": "^4.0.4",
+    "x-ray": "^2.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.9.1"
