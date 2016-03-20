@@ -25,11 +25,15 @@ var expectArticleData = function(article) {
   });
 };
 
-describe('Article', function() {
+describe('Articles', function() {
 
   it('return information about "noticias" article', function(done) {
 
-    scraper.get('http://el-carabobeno.com/noticias/articulo/121773/turista-egipcio-asesinado-fuera-del-aeropuerto-de-maiqueta')
+    scraper.get({
+      id: '121773',
+      name: 'turista-egipcio-asesinado-fuera-del-aeropuerto-de-maiqueta',
+      section: 'noticias'
+    })
     .then(function(article) {
       expectArticleData(article);
 
@@ -40,7 +44,11 @@ describe('Article', function() {
 
   it('return information about "deportes" article', function(done) {
 
-    scraper.get('http://el-carabobeno.com/deportes/articulo/121761/trotamundos-intentar-prolongar-su-buen-momento')
+    scraper.get({
+      id: '121761',
+      name: 'trotamundos-intentar-prolongar-su-buen-momento',
+      section: 'deportes'
+    })
     .then(function(article) {
       expectArticleData(article);
 
@@ -51,7 +59,11 @@ describe('Article', function() {
 
   it('return information about "economia" article', function(done) {
 
-    scraper.get('http://el-carabobeno.com/economia/articulo/121600/planta-de-fama-de-amrica-trabaja-a-40-de-su-capacidad')
+    scraper.get({
+      id: '121600',
+      name: 'planta-de-fama-de-amrica-trabaja-a-40-de-su-capacidad',
+      section: 'economia'
+    })
     .then(function(article) {
       expectArticleData(article);
 
@@ -62,7 +74,11 @@ describe('Article', function() {
 
   it('return information about "comunidad" article', function(done) {
 
-    scraper.get('http://el-carabobeno.com/comunidad/articulo/121041/aguas-negras-en-el-centro-de-valencia')
+    scraper.get({
+      id: '121041',
+      name: 'aguas-negras-en-el-centro-de-valencia',
+      section: 'comunidad'
+    })
     .then(function(article) {
       expectArticleData(article);
 
@@ -73,7 +89,11 @@ describe('Article', function() {
 
   it('return information about "vida" article', function(done) {
 
-    scraper.get('http://el-carabobeno.com/vida/articulo/121490/carlos-cruz-diez-recibi-premio-trebbia-2016')
+    scraper.get({
+      id: '121490',
+      name: 'carlos-cruz-diez-recibi-premio-trebbia-2016',
+      section: 'vida'
+    })
     .then(function(article) {
       expectArticleData(article);
 
@@ -84,18 +104,11 @@ describe('Article', function() {
 
   it('return information about "parentesis" article', function(done) {
 
-    scraper.get('http://el-carabobeno.com/parentesis/articulo/121672/homenajes-para-juan-vicente-torrealba')
-    .then(function(article) {
-      expectArticleData(article);
-
-      done();
-    });
-
-  });
-
-  it('return information about "parentesis" article', function(done) {
-
-    scraper.get('http://el-carabobeno.com/parentesis/articulo/121672/homenajes-para-juan-vicente-torrealba')
+    scraper.get({
+      id: '121672',
+      name: 'homenajes-para-juan-vicente-torrealba',
+      section: 'parentesis'
+    })
     .then(function(article) {
       expectArticleData(article);
 

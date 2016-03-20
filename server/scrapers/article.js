@@ -2,7 +2,10 @@ var _ = require('lodash');
 var Promise = require('bluebird');
 var x = require('x-ray')();
 
-var ArticleSchema = {
+var config = require('../../config/env');
+var logger = require('../utils/logger');
+
+var ArticlePattern = {
   title: 'title',
   description: 'meta[name=description]@content',
   author: 'meta[name=author]@content',
@@ -17,26 +20,37 @@ var ArticleSchema = {
   paragraphs: ['#articletext p']
 };
 
-var parseXData = function(xData) {
-  xData.paragraphs_author = shiftParagraphAuthor(xData);
-  return xData;
-};
-
-exports.get = function(articleUrl) {
-  var scrapeArticle = x(articleUrl, ArticleSchema);
+exports.get = function(args) {
+  var id = args.id,
+      name = args.name,
+      section = args.section,
+      paperUrl = config.paper_url,
+      articleUrl = paperUrl + section +'/articulo/'+ id +'/'+ name,
+      scrapeArticle = x(articleUrl, ArticlePattern);
 
   return new Promise(function (resolve, reject) {
 
     scrapeArticle(function(err, data) {
       if (err) {
+        logger.error("Scraping Error", err);
         return reject(err);
       }
 
-      return resolve(parseXData(data));
-    });
+      return resolve(data);
+    })
 
-  });
+  })
+  .then(parseXData);
 
+};
+
+
+var parseXData = function(xData) {
+  xData.paragraphs_author = shiftParagraphAuthor(xData);
+
+  xData.paragraphs = _.reject(xData.paragraphs, _.isEmpty);
+
+  return xData;
 };
 
 var shiftParagraphAuthor = function(xData) {
