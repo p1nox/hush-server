@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon . | bunyan -o short"
+    "start": "nodemon . | bunyan -o short",
+    "test": "mocha"
   },
   "license": "MIT",
   "dependencies": {
@@ -15,6 +16,8 @@
     "x-ray": "^2.0.3"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
     "nodemon": "^1.9.1"
   }
 }
