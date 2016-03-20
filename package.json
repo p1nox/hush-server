@@ -10,6 +10,7 @@
   "dependencies": {
     "bluebird": "^3.3.4",
     "bunyan": "^1.8.0",
+    "commander": "^2.9.0",
     "lodash": "^4.6.1",
     "mongoose": "^4.4.8",
     "restify": "^4.0.4",
