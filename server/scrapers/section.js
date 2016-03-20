@@ -32,7 +32,7 @@ exports.get = function(name) {
       sectionUrl = paperUrl +'secciones/'+ name,
       scrapeArticle = x(sectionUrl, SectionPattern);
 
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
 
     scrapeArticle(function(err, data) {
       if (err) {
@@ -45,30 +45,30 @@ exports.get = function(name) {
 
   })
   .then(parseXData(name));
-
 };
 
-var parseXData = function(name) {
+
+function parseXData(name) {
   return function(xData) {
-    xData.section = name;
+    xData.name = name;
 
     xData.featured = _.map(xData.featured, addArticleName);
     xData.suggestions = _.map(xData.suggestions, addArticleName);
     xData.news = _.map(xData.news, addArticleName);
 
     return xData;
-  }
-};
+  };
+}
 
-var addArticleName = function(article) {
+function addArticleName(article) {
   article.name = getArticleNameFromUrl(article.url);
   return article;
-};
+}
 
-var getArticleNameFromUrl = function(url) {
+function getArticleNameFromUrl(url) {
   if (!_.isString(url) || _.isEmpty(url)) {
     return ;
   }
 
   return _.last(url.split('/'));
-};
+}

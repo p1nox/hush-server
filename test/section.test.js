@@ -10,7 +10,7 @@ var expectSectionData = function(section) {
   expect(section).to.have.property('copyright').that.is.a('string');
   expect(section).to.have.property('og_title').that.is.a('string');
   expect(section).to.have.property('og_description').that.is.a('string');
-  expect(section).to.have.property('section').that.is.a('string');
+  expect(section).to.have.property('name').that.is.a('string');
 
   expect(section).to.have.property('featured').that.is.an('array');
   expect(section).to.have.property('featured').to.be.not.empty;

@@ -37,27 +37,26 @@ exports.get = function(args) {
       }
 
       return resolve(data);
-    })
+    });
 
   })
   .then(parseXData);
-
 };
 
 
-var parseXData = function(xData) {
+function parseXData(xData) {
   xData.paragraphs_author = shiftParagraphAuthor(xData);
 
   xData.paragraphs = _.reject(xData.paragraphs, _.isEmpty);
 
   return xData;
-};
+}
 
-var shiftParagraphAuthor = function(xData) {
+function shiftParagraphAuthor(xData) {
   var paragraphs = xData.paragraphs;
   if (!_.isArray(paragraphs)) {
     return ;
   }
 
   return paragraphs.shift();
-};
+}
