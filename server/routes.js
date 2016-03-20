@@ -7,4 +7,6 @@ module.exports = function(server) {
 
   server.get('/scrape/article', scrapeController.article);
 
+  server.get('/scrape/section', scrapeController.section);
+
 };
