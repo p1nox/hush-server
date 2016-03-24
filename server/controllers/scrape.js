@@ -3,7 +3,7 @@ var scrpSection = require('../scrapers/section');
 var scrpArticle = require('../scrapers/article');
 
 exports.section = function(req, res, next) {
-  var name = req.query.name;
+  var name = req.params.name;
 
   return scrpSection.get(name)
   .then(function(section) {

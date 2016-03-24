@@ -5,8 +5,8 @@ module.exports = function(server) {
 
   server.get('/health-check', healthController.check);
 
-  server.get('/scrape/article', scrapeController.article);
+  server.get('/scrape/section/:name', scrapeController.section);
 
-  server.get('/scrape/section', scrapeController.section);
+  server.get('/scrape/article', scrapeController.article);
 
 };
