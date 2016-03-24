@@ -12,7 +12,7 @@
     "bunyan": "^1.8.0",
     "commander": "^2.9.0",
     "lodash": "^4.6.1",
-    "mongoose": "^4.4.8",
+    "redis": "^2.5.3",
     "restify": "^4.0.4",
     "x-ray": "^2.0.3"
   },
