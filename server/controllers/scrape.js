@@ -8,7 +8,8 @@ exports.section = function(req, res, next) {
   return scrpSection.get(name)
   .then(function(section) {
     res.send(section);
-  });
+  })
+  .catch(controllerErr);
 };
 
 exports.article = function(req, res, next) {
@@ -23,5 +24,11 @@ exports.article = function(req, res, next) {
   })
   .then(function(article) {
     res.send(article);
-  });
+  })
+  .catch(controllerErr);
 };
+
+
+function controllerErr(err) {
+  logger.error('Scrape controller error', err);
+}

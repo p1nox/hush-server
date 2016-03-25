@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var Promise = require('bluebird');
 
 var config = require('../../config/env');
 var redis = require('../utils/redis');
@@ -16,7 +17,25 @@ var Section = {
     return _.includes(this.defaultSections, name);
   },
 
-  get: function(name) {
+
+  findAll: function() {
+
+    return Promise.all(
+      _.map(this.defaultSections, _.bind(this.find, this))
+    )
+    .then(function(sections) {
+      if (!_.isArray(sections) || _.isEmpty(sections)) {
+        return [];
+      }
+
+      return _.reject(sections, function(section) {
+        return !section;
+      });
+    });
+  },
+
+
+  find: function(name) {
     if (!this.isValidSection(name)) {
       return ;
     }
@@ -31,7 +50,8 @@ var Section = {
     });
   },
 
-  set: function(name, data) {
+
+  save: function(name, data) {
     if (!this.isValidSection(name) || _.isEmpty(data)) {
       return ;
     }
@@ -41,6 +61,7 @@ var Section = {
       return data;
     });
   }
+
 
 };
 
