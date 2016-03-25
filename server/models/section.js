@@ -46,6 +46,7 @@ var Section = {
 
 module.exports = Section;
 
+
 function dbKey(sectionName) {
   return 'sections-' + sectionName;
 }

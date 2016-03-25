@@ -36,6 +36,7 @@ module.exports = {
 
 };
 
+
 function getClientInfo(redisConfig) {
   return redisConfig.host + ':' + redisConfig.port;
 }
