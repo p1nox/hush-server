@@ -13,7 +13,7 @@ module.exports = function(server) {
 
   if (config.env !== 'production') {
     server.get('/scrape/section/:name', scrapeController.section);
-    server.get('/scrape/article', scrapeController.article);
+    server.get('/scrape/section/:name/article', scrapeController.article);
   }
 
 };

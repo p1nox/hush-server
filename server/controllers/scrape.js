@@ -14,7 +14,7 @@ exports.section = function(req, res, next) {
 
 exports.article = function(req, res, next) {
   var id = req.query.id,
-      name = req.query.name,
+      name = req.params.name,
       section = req.query.section;
 
   return scrpArticle.get({
