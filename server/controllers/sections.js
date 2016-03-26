@@ -4,6 +4,7 @@ var Section = require('../models/section');
 var scrpSection = require('../scrapers/section');
 
 exports.index = function(req, res, next) {
+  logger.info('Section controller: sections');
 
   return Section.findAll()
   .then(function(sections) {
@@ -15,6 +16,7 @@ exports.index = function(req, res, next) {
 
 exports.get = function(req, res, next) {
   var name = req.params.name;
+  logger.info('Section controller: section ' + name);
 
   if (!Section.isValidSection(name)) {
     return res.send(404, 'invalid section name');
