@@ -1,4 +1,5 @@
 var config = require('../../config/env');
+var logger = require('../utils/logger');
 var scrpSection = require('../scrapers/section');
 var scrpArticle = require('../scrapers/article');
 
