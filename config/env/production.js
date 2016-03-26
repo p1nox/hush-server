@@ -2,7 +2,7 @@ module.exports = {
 
 	env: 'production', // process.env.NODE_ENV
 
-	port: process.env.PORT,
+	port: process.env.PORT || process.env.DOKKU_NGINX_PORT,
 	paper_url: process.env.PAPER_URL,
 
 	logger_token: process.env.LOGGER_TOKEN,
