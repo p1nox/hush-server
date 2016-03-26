@@ -11,11 +11,9 @@ module.exports = {
     // sections storage
     // expired every 5 days
     sections: {
-      port:       process.env.REDIS_PORT,
-      host:       process.env.REDIS_HOST,
+      url:        process.env.REDIS_URL,
       pass:       process.env.REDIS_PASS,
-      expiryTime: 60 * 60 * 24 * 5,
-      db:         0
+      expiryTime: 60 * 60 * 24 * 5
     }
   }
 

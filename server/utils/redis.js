@@ -9,19 +9,14 @@ Promise.promisifyAll(redis.Multi.prototype);
 module.exports = {
 
   connect: function(redisConfig) {
-    var clientInfo = getClientInfo(redisConfig);
-
-    var client = redis.createClient(
-      redisConfig.port,
-      redisConfig.host
-    );
+    var client = redis.createClient(redisConfig.url);
 
     client.on('ready', function () {
-      logger.info('redis client connected: ', clientInfo);
+      logger.info('redis client connected', redisConfig.url);
     });
 
     client.on('error', function (err) {
-      logger.error('redis client error ', clientInfo, err);
+      logger.error('redis client error', redisConfig.url, err);
     });
 
     client.auth(redisConfig.pass, function(err) {
@@ -35,8 +30,3 @@ module.exports = {
   }
 
 };
-
-
-function getClientInfo(redisConfig) {
-  return redisConfig.host + ':' + redisConfig.port;
-}

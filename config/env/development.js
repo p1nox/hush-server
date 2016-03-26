@@ -11,11 +11,9 @@ module.exports = {
     // sections storage
     // expired every 5 days
     sections: {
-      port:       6379,
-      host:       'localhost',
+      url:        'redis://localhost:6379/0',
       pass:       '',
-      expiryTime: 60 * 60 * 24 * 5,
-      db:         0
+      expiryTime: 60 * 60 * 24 * 5
     }
   }
 
