@@ -4,6 +4,7 @@ var scrpArticle = require('../scrapers/article');
 
 exports.section = function(req, res, next) {
   var name = req.params.name;
+  logger.info('Scrape controller: section ' + name);
 
   return scrpSection.get(name)
   .then(function(section) {
@@ -16,6 +17,7 @@ exports.article = function(req, res, next) {
   var id = req.query.id,
       name = req.params.name,
       section = req.query.section;
+  logger.info('Scrape controller: article ' + id + '-' + name + '-' + section);
 
   return scrpArticle.get({
     id: id,
