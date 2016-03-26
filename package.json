@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start app.js --watch && pm2 logs",
-    "production": "pm2 start app.js",
-    "stopall": "pm2 stop all",
+    "start": "nodemon . | bunyan -o short",
+    "production": "forever -m 5 app.js",
     "test": "mocha"
   },
-  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.3.4",
     "bunyan": "^1.8.0",
@@ -16,7 +14,6 @@
     "commander": "^2.9.0",
     "forever": "^0.15.1",
     "lodash": "^4.6.1",
-    "pm2": "^1.0.2",
     "redis": "^2.5.3",
     "restify": "^4.0.4",
     "x-ray": "^2.0.3"
@@ -26,7 +23,5 @@
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1"
   },
-  "engines": {
-    "node": "4.4.0"
-  }
+  "license": "MIT",
 }
