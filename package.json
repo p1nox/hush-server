@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon . | bunyan -o short",
+    "start": "pm2 start app.js --watch && pm2 logs",
+    "production": "pm2 start app.js",
+    "stopall": "pm2 stop all",
     "test": "mocha"
   },
   "license": "MIT",
@@ -13,6 +15,7 @@
     "bunyan-logentries": "^1.2.0",
     "commander": "^2.9.0",
     "lodash": "^4.6.1",
+    "pm2": "^1.0.2",
     "redis": "^2.5.3",
     "restify": "^4.0.4",
     "x-ray": "^2.0.3"
