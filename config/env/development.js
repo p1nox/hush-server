@@ -1,6 +1,6 @@
 module.exports = {
 
-  env: 'development',
+  env: 'development', // process.env.NODE_ENV
 
   port: 3000,
   paper_url: 'http://el-carabobeno.com/',

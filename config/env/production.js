@@ -1,6 +1,6 @@
 module.exports = {
 
-	env: 'production',
+	env: 'production', // process.env.NODE_ENV
 
 	port: process.env.PORT,
 	paper_url: process.env.PAPER_URL,
