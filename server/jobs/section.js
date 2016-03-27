@@ -81,5 +81,3 @@ function attachArticleData(articleHash, articles) {
 function jobErr(err) {
   logger.error('Section job error', err);
 }
-
-SectionJobs.refreshAll();
