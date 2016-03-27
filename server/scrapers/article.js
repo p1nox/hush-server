@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var R = require('ramda');
 var Promise = require('bluebird');
 var x = require('x-ray')();
 
@@ -40,7 +41,8 @@ exports.get = function(args) {
     });
 
   })
-  .then(parseXData);
+  .then(parseXData)
+  .then(attachBasicData({id: id, name: name, section: section}));
 };
 
 
@@ -59,4 +61,10 @@ function shiftParagraphAuthor(xData) {
   }
 
   return paragraphs.shift();
+}
+
+function attachBasicData(basicData) {
+  return function(articleData) {
+    return R.merge(articleData, basicData);
+  };
 }
