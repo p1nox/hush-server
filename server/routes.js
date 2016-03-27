@@ -8,7 +8,6 @@ module.exports = function(server) {
   server.get('/health-check', healthController.check);
 
   server.get('/sections', sectionsController.index);
-
   server.get('/section/:name', sectionsController.get);
 
   if (config.env !== 'production') {
