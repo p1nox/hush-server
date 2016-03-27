@@ -1,5 +1,6 @@
 var program = require('commander');
 var _ = require('lodash');
+var R = require('ramda');
 var Promise = require('bluebird');
 
 var scrpSection = require('../server/scrapers/section');
@@ -24,7 +25,8 @@ if (!_.isString(sectionName) || _.isEmpty(sectionName)) {
 
 scrpSection.get(sectionName)
 .then(function(section) {
-  console.log('Section found:', section);
+  //console.log('Section found:', section);
+
   var allArticles = _.concat([],
     section.featured,
     section.suggestions,
@@ -35,9 +37,15 @@ scrpSection.get(sectionName)
     _.map(allArticles, scrapeArticle(section))
   )
   .then(function(articles) {
-    console.log('Artiles found:', articles);
+    // console.log('Artiles found:', articles);
 
-    return articles;
+    var articleHash = indexById(articles);
+    section.featured = attachArticleData(articleHash, section.featured);
+    section.suggestions = attachArticleData(articleHash, section.suggestions);
+    section.news = attachArticleData(articleHash, section.news);
+
+    console.log('Section data fetched: %j', section);
+    return section;
   });
 })
 .catch(function(err) {
@@ -54,3 +62,14 @@ function scrapeArticle(section) {
     });
   };
 }
+
+var indexById = R.indexBy(R.prop('id'));
+
+var attachArticleData = function(articleHash, articles) {
+  return R.map(function(article) {
+    var articleData = articleHash[article.id];
+    article.data = articleData ? articleData : article.data;
+
+    return article;
+  })(articles);
+};
