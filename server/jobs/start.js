@@ -8,6 +8,7 @@ var jobs = {
 
   start: function() {
     refreshAllSections();
+    logger.info('All jobs started!');
   }
 
 };
@@ -18,7 +19,7 @@ jobs.start();
 // Refresh all sections every 6 hours
 function refreshAllSections() {
   schedule.scheduleJob('0 */6 * * *', function(){
-    logger.info('Job started!');
+    logger.info('SectionJobs.refreshAll started!');
 
     return SectionJobs.refreshAll();
   });
