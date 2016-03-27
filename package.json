@@ -24,7 +24,7 @@
     "nodemon": "^1.9.1"
   },
   "engines": {
-    "node": "4.4.0"
+    "node": "4.x"
   },
   "license": "MIT"
 }
