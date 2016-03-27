@@ -16,6 +16,9 @@ var expectArticleData = function(article) {
   expect(article).to.have.property('article_photo').that.is.a('string');
   expect(article).to.have.property('article_photo_caption').that.is.a('string');
   expect(article).to.have.property('paragraphs_author').that.is.a('string');
+  expect(article).to.have.property('id').that.is.a('string');
+  expect(article).to.have.property('name').that.is.a('string');
+  expect(article).to.have.property('section').that.is.a('string');
 
   expect(article).to.have.property('paragraphs').that.is.an('array');
   expect(article).to.have.property('paragraphs').to.be.not.empty;

@@ -6,15 +6,14 @@ var Section = require('../models/section');
 var scrpSection = require('../scrapers/section');
 var scrpArticle = require('../scrapers/article');
 
-var SectionJobs = {
 
+var SectionJobs = {
 
   refreshAll: function() {
     var refreshAllSections = R.map(SectionJobs.refresh, Section.defaultSections);
 
     return Promise.all(refreshAllSections);
   },
-
 
   refresh: function(name) {
     if (!Section.isValidSection(name)) {
@@ -50,7 +49,6 @@ var SectionJobs = {
     })
     .catch(jobErr);
   }
-
 
 };
 
