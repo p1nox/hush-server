@@ -1,6 +1,6 @@
 var schedule = require('node-schedule');
 
-var logger = require('../utils/logger');
+var logger = require('./utils/logger');
 var SectionJobs = require('./section');
 
 

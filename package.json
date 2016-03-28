@@ -4,6 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon . | bunyan -o short",
+    "worker": "node ./jobs/start.js | bunyan -o short",
     "production": "forever -m 5 app.js",
     "test": "mocha"
   },

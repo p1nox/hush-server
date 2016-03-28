@@ -1,10 +1,10 @@
 var R = require('ramda');
 var Promise = require('bluebird');
 
-var logger = require('../utils/logger');
-var Section = require('../models/section');
-var scrpSection = require('../scrapers/section');
-var scrpArticle = require('../scrapers/article');
+var logger = require('./utils/logger');
+var Section = require('../server/models/section');
+var scrpSection = require('../server/scrapers/section');
+var scrpArticle = require('../server/scrapers/article');
 
 
 var SectionJobs = {
