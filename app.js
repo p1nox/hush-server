@@ -1,7 +1,10 @@
-require('newrelic');
+var config = require('./config/env');
+
+if (config.env === 'production') {
+  require('newrelic');
+}
 
 var server = require('./server');
-var config = require('./config/env');
 var logger = require('./server/utils/logger');
 
 server.listen(config.port, function() {
