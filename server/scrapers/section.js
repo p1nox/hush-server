@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var R = require('ramda');
 var Promise = require('bluebird');
 var x = require('x-ray')();
 
@@ -52,9 +52,9 @@ function parseXData(name) {
   return function(xData) {
     xData.name = name;
 
-    xData.featured = _.map(xData.featured, addArticleName);
-    xData.suggestions = _.map(xData.suggestions, addArticleName);
-    xData.news = _.map(xData.news, addArticleName);
+    xData.featured = R.map(addArticleName, xData.featured);
+    xData.suggestions = R.map(addArticleName, xData.suggestions);
+    xData.news = R.map(addArticleName, xData.news);
 
     return xData;
   };
@@ -66,9 +66,9 @@ function addArticleName(article) {
 }
 
 function getArticleNameFromUrl(url) {
-  if (!_.isString(url) || _.isEmpty(url)) {
+  if (!R.is(String, url) || R.isEmpty(url)) {
     return ;
   }
 
-  return _.last(url.split('/'));
+  return R.last(url.split('/'));
 }

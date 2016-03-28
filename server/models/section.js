@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var R = require('ramda');
 var Promise = require('bluebird');
 
 var config = require('../../config/env');
@@ -14,23 +14,23 @@ var Section = {
   ],
 
   isValidSection: function(name) {
-    return _.includes(this.defaultSections, name);
+    return R.contains(name, this.defaultSections);
   },
 
 
   findAll: function() {
 
     return Promise.all(
-      _.map(this.defaultSections, _.bind(this.find, this))
+      R.map(R.bind(this.find, this), this.defaultSections)
     )
     .then(function(sections) {
-      if (!_.isArray(sections) || _.isEmpty(sections)) {
+      if (!R.is(Array, sections) || R.isEmpty(sections)) {
         return [];
       }
 
-      return _.reject(sections, function(section) {
+      return R.reject(function(section) {
         return !section;
-      });
+      }, sections);
     });
   },
 
@@ -52,7 +52,7 @@ var Section = {
 
 
   save: function(name, data) {
-    if (!this.isValidSection(name) || _.isEmpty(data)) {
+    if (!this.isValidSection(name) || R.isEmpty(data)) {
       return ;
     }
 

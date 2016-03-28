@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var R = require('ramda');
 var expect = require('chai').expect;
 
 var scraper = require('../server/scrapers/article');
@@ -22,10 +22,10 @@ var expectArticleData = function(article) {
 
   expect(article).to.have.property('paragraphs').that.is.an('array');
   expect(article).to.have.property('paragraphs').to.be.not.empty;
-  _.each(article.paragraphs, function(p) {
+  R.forEach(function(p) {
     expect(p).to.be.a('string');
     expect(p).to.not.equal('');
-  });
+  }, article.paragraphs);
 };
 
 describe('Articles', function() {

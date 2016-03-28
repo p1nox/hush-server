@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var R = require('ramda');
 var Promise = require('bluebird');
 var x = require('x-ray')();
@@ -49,14 +48,14 @@ exports.get = function(args) {
 function parseXData(xData) {
   xData.paragraphs_author = shiftParagraphAuthor(xData);
 
-  xData.paragraphs = _.reject(xData.paragraphs, _.isEmpty);
+  xData.paragraphs = R.reject(R.isEmpty, xData.paragraphs);
 
   return xData;
 }
 
 function shiftParagraphAuthor(xData) {
   var paragraphs = xData.paragraphs;
-  if (!_.isArray(paragraphs)) {
+  if (!R.is(Array, paragraphs)) {
     return ;
   }
 

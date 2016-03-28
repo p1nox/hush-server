@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var R = require('ramda');
 var expect = require('chai').expect;
 
 var scraper = require('../server/scrapers/section');
@@ -14,11 +14,11 @@ var expectSectionData = function(section) {
 
   expect(section).to.have.property('featured').that.is.an('array');
   expect(section).to.have.property('featured').to.be.not.empty;
-  _.each(section.featured, function(f) {
+  R.forEach(function(f) {
     expect(f).to.have.property('id').that.is.a('string');
     expect(f).to.have.property('url').that.is.a('string');
     expect(f).to.have.property('name').that.is.a('string');
-  });
+  }, section.featured);
 };
 
 describe('Sections', function() {
