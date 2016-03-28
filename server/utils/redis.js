@@ -19,13 +19,6 @@ module.exports = {
       logger.error('redis client error', redisConfig.url, err);
     });
 
-    client.auth(redisConfig.pass, function(err) {
-      if (err) {
-        logger.error(err);
-        throw err;
-      }
-    });
-
     return client;
   }
 
