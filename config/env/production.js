@@ -6,6 +6,7 @@ module.exports = {
 	paper_url: process.env.PAPER_URL,
 
 	logger_token: process.env.LOGGER_TOKEN,
+	newrelic_key: process.env.NEWRELIC_KEY,
 
 	redis: {
     // sections storage

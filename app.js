@@ -1,3 +1,5 @@
+require('newrelic');
+
 var server = require('./server');
 var config = require('./config/env');
 var logger = require('./server/utils/logger');
