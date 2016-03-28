@@ -5,14 +5,13 @@
   "scripts": {
     "start": "nodemon . | bunyan -o short",
     "worker": "node ./jobs/start.js | bunyan -o short",
-    "production": "forever -m 5 app.js",
+    "production": "node app.js",
     "test": "mocha"
   },
   "dependencies": {
     "bluebird": "^3.3.4",
     "bunyan": "^1.8.0",
     "bunyan-logentries": "^1.2.0",
-    "forever": "^0.15.1",
     "newrelic": "^1.26.0",
     "node-schedule": "^1.1.0",
     "ramda": "^0.20.0",
