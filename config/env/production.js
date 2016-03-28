@@ -13,7 +13,6 @@ module.exports = {
     // expired every 5 days
     sections: {
       url:        process.env.REDIS_URL,
-      pass:       process.env.REDIS_PASS,
       expiryTime: 60 * 60 * 24 * 5
     }
   }
