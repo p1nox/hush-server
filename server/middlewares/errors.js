@@ -18,8 +18,9 @@ module.exports = function(server) {
 
 
 function handleUnexpectedError(res, err) {
-  return res.send(err.code || 500, {
-    code: err.code || 500,
+  var code = err.code || 500;
+  return res.send(code, {
+    code: code,
     description: 'Internal Server Error'
   });
 }
