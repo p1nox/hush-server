@@ -5,14 +5,14 @@ var sectionsController = require('./controllers/sections');
 
 module.exports = function(server) {
 
-  server.get('/health-check', healthController.check);
+  server.get('/api/health-check', healthController.check);
 
-  server.get('/sections', sectionsController.index);
-  server.get('/section/:name', sectionsController.get);
+  server.get('/api/sections', sectionsController.index);
+  server.get('/api/section/:name', sectionsController.get);
 
   if (config.env !== 'production') {
-    server.get('/scrape/section/:name', scrapeController.section);
-    server.get('/scrape/section/:name/article', scrapeController.article);
+    server.get('/api/scrape/section/:name', scrapeController.section);
+    server.get('/api/scrape/section/:name/article', scrapeController.article);
   }
 
 };
